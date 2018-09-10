@@ -34,7 +34,7 @@ create table order_master (
 	key idx_buyer_openid (buyer_openid)
 ) comment '订单表';
 
-create table order_detail {
+create table order_detail (
 	detail_id varchar(32) not null,
 	order_id varchar(32) not null,
 	product_id varchar(32) not null,
@@ -46,5 +46,5 @@ create table order_detail {
 	primary key (detail_id),
 	key idx_order_id (order_id)
 
-} comment '订单详情';
+) comment '订单详情';
 
