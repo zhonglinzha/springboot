@@ -2,18 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sell.dao.OrderMasterMapper">
     <resultMap id="BaseResultMap" type="com.example.sell.entity.OrderMaster">
-        <!--
-          WARNING - @mbg.generated
-        -->
-        <id column="id" jdbcType="BIGINT" property="id" />
-        <result column="account_id" jdbcType="BIGINT" property="accountId" />
-        <result column="inout_type" jdbcType="TINYINT" property="inoutType" />
-        <result column="money_exchange" jdbcType="INTEGER" property="moneyExchange" />
-        <result column="money_total" jdbcType="INTEGER" property="moneyTotal" />
-        <result column="money_value_card" jdbcType="INTEGER" property="moneyValueCard" />
-        <result column="ctime" jdbcType="TIMESTAMP" property="ctime" />
-        <result column="mtime" jdbcType="TIMESTAMP" property="mtime" />
-        <result column="description" jdbcType="VARCHAR" property="description" />
-        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+        <result column="buyer_name" jdbcType="VARCHAR" property="buyerName" />
+        <result column="buyer_phone" jdbcType="VARCHAR" property="buyerPhone" />
+        <result column="buyer_add" jdbcType="VARCHAR" property="buyerAdd" />
+        <result column="buyer_openid" jdbcType="VARCHAR" property="buyerOpenId" />
+        <result column="order_amount" jdbcType="DECIMAL" property="orderAmount" />
+        <result column="order_status" jdbcType="TINYINT" property="orderStatus" />
+        <result column="pay_status" jdbcType="TINYINT" property="payStatus" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     </resultMap>
+    
+    <select id="getOM" resultMap="BaseResultMap" parameterMap="java.lang.Integer">
+        select * from order_master where order_id = #{ orderId }
+    </select>
+
+    <insert id="insertOrderInfo" parameterType="com.example.sell.entity.OrderMaster">
+        insert into
+         order_master (order_id, buyer_name, buyer_phone, buyer_add, buyer_openid, order_amount, order_status, pay_status, create_time)
+        values
+        (#{orderId},#{buyerName},#{buyerPhone},#{buyerAdd},#{buyerOpenId},#{orderAmount},#{orderStatus},#{payStatus},#{createTime})
+    </insert>
+
 </mapper>
