@@ -3,6 +3,7 @@ package com.example.sell.service;
 
 import com.example.sell.dao.ProductCategoryMapper;
 import com.example.sell.entity.ProductCategory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@Slf4j
 public class ProductCategoryService {
 
     @Autowired
@@ -35,6 +37,8 @@ public class ProductCategoryService {
     }
 
     public Integer updateProductCategory(ProductCategory pc){
+
+         log.debug(pc.toString());
         return productCategoryMapper.updateProductCategory(pc);
     }
 
