@@ -13,7 +13,7 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     </resultMap>
     
-    <select id="getOM" resultMap="BaseResultMap" parameterMap="java.lang.Integer">
+    <select id="getOM" resultMap="BaseResultMap" parameterType="java.lang.String">
         select order_id, buyer_name, buyer_phone, buyer_add, buyer_openid, order_amount, order_status, pay_status, create_time
         from order_master
         where order_id = #{ orderId, jdbcType=VARCHAR}
@@ -23,5 +23,7 @@
         insert into order_master (order_id, buyer_name, buyer_phone, buyer_add, buyer_openid, order_amount, order_status, pay_status, create_time)
         values (#{orderId},#{buyerName},#{buyerPhone},#{buyerAdd},#{buyerOpenId},#{orderAmount},#{orderStatus},#{payStatus},#{createTime})
     </insert>
+
+
 
 </mapper>
