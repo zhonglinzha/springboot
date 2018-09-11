@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sell.dao.OrderDetailMapper">
+    <resultMap id="BaseResultMap" type="com.example.sell.entity.OrderDetail">
+        <id column="detail_id" jdbcType="VARCHAR" property="detailId"/>
+        <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+        <result column="product_id" jdbcType="VARCHAR" property="productId" />
+        <result column="product_name" jdbcType="VARCHAR" property="productName" />
+        <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
+        <result column="product_quantity" jdbcType="INT" property="productQuantity" />
+        <result column="product_icon" jdbcType="VARCHAR" property="productIcon" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+
+    <!--resultMap 自定义返回数据  还可以加默认值  如果返回一部分数据 就用 -->
+
+    <!--resultType 全部返回 就是一样-->
+
+    <insert id="insertOD" parameterType="com.example.sell.entity.OrderDetail">
+        insert into order_detail ()
+        values ()
+    </insert>
+
+
+
+</mapper>
