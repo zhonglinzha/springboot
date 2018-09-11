@@ -5,7 +5,7 @@ import java.util.Date;
 public class OrderMaster {
 
 
-    private Integer orderId;
+    private String orderId;
     private String buyerName;
     private String buyerPhone;
     private String buyerAdd;
@@ -30,11 +30,11 @@ public class OrderMaster {
                 '}';
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

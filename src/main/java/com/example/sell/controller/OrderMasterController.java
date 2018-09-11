@@ -25,17 +25,18 @@ public class OrderMasterController {
 
     @PostMapping("/updateOrderInfo")
     public Integer updateOrderInfo(OrderMaster om){
-        return orderMasterService.insertOrderInfo(om);
+        om.setCreateTime(new Date());
+        return orderMasterService.updateOrderInfo(om);
 
     }
     @PostMapping("/deleteOrderInfo/{orderId}")
-    public Integer deleteOrderInfo(@PathVariable Integer orderId){
+    public Integer deleteOrderInfo(@PathVariable String orderId){
         return orderMasterService.deleteOrderInfo(orderId);
 
     }
 
     @PostMapping("/getOM/{orderId}")
-    public OrderMaster getOM(@PathVariable Integer orderId){
+    public OrderMaster getOM(@PathVariable String orderId){
         return orderMasterService.getOM(orderId);
 
     }

@@ -22,12 +22,12 @@ public class OrderMasterService {
 
     }
 
-    public Integer deleteOrderInfo(Integer orderId){
+    public Integer deleteOrderInfo(String orderId){
         return orderMasterMapper.deleteOrderInfo(orderId);
 
     }
 
-    public OrderMaster getOM(Integer orderId){
+    public OrderMaster getOM(String orderId){
         return orderMasterMapper.getOM(orderId);
 
     }

@@ -10,9 +10,9 @@ public interface OrderMasterMapper {
 
     Integer updateOrderInfo(OrderMaster om);
 
-    Integer deleteOrderInfo(Integer orderId);
+    Integer deleteOrderInfo(String orderId);
 
-    OrderMaster getOM(Integer orderId);
+    OrderMaster getOM(String orderId);
 
     List<OrderMaster> getOMs();
 }
