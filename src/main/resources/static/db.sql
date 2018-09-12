@@ -1,3 +1,5 @@
+# noinspection SqlNoDataSourceInspectionForFile
+
 create table product_info (
 	product_id varchar(32) not null,
 	product_name varchar(64) not null,
@@ -48,3 +50,20 @@ create table order_detail (
 
 ) comment '订单详情';
 
+create table user (
+  user_id int not null auto_increment,
+  user_name varchar(32) not null,
+  user_pass varchar(32) not null,
+  user_phone varchar(32) not null,
+  user_address varchar(512) not null,
+  primary key (user_id)
+) comment '用户表';
+
+create table book (
+  book_id int not null auto_increment,
+  book_name varchar(32) not null,
+  book_price varchar(32) not null,
+  book_owner int not null,
+  primary key (book_id),
+  foreign key (book_owner) references user (user_id)
+) comment '书籍表';

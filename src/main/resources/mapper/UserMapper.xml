@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sell.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.sell.entity.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_pass" jdbcType="VARCHAR" property="userPass"/>
+        <result column="user_phone" jdbcType="VARCHAR" property="userPhone"/>
+        <result column="user_address" jdbcType="VARCHAR" property="userAdd"/>
+    </resultMap>
+
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId" parameterType="com.example.sell.entity.User">
+        insert into user (user_name, user_pass, user_phone, user_address)
+        values (#{userName},#{userPass},#{userPhone},#{userAdd})
+    </insert>
+
+    <update id="updateUser" parameterType="com.example.sell.entity.User">
+        update user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName != null">
+                user_name=#{userName},
+            </if>
+            <if test="userPass != null">
+                user_pass=#{userPass},
+            </if>
+            <if test="userPhone != null">
+                user_phone=#{userPhone},
+            </if>
+            <if test="userAdd != null">
+                user_address=#{userAdd},
+            </if>
+        </trim>
+        where user_id=#{userId}
+    </update>
+
+    <delete id="deleteUser" parameterType="com.example.sell.entity.User">
+        delete from user
+        <where>
+            <if test="userId != null">
+                user_id = #{userId}
+            </if>
+            <if test="userName != null">
+                AND user_name = #{userName}
+            </if>
+        </where>
+    </delete>
+
+
+</mapper>
