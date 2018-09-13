@@ -7,6 +7,13 @@
         <result column="user_pass" jdbcType="VARCHAR" property="userPass"/>
         <result column="user_phone" jdbcType="VARCHAR" property="userPhone"/>
         <result column="user_address" jdbcType="VARCHAR" property="userAdd"/>
+        <collection column="book_owner" property="books" ofType="com.example.sell.entity.Book"
+                    select="com.example.sell.dao.BookMapper.getBooks">
+            <id column="book_id" jdbcType="INTEGER" property="bookId" />
+            <result column="book_name" jdbcType="VARCHAR" property="bookName"/>
+            <result column="book_price" jdbcType="VARCHAR" property="bookPrice"/>
+            <result column="book_owner" jdbcType="INTEGER" property="bookOwner"/>
+        </collection>
     </resultMap>
 
 
@@ -45,6 +52,10 @@
             </if>
         </where>
     </delete>
+
+    <select id="getUserAndBooks" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from user where user_id=#{userId}
+    </select>
 
 
 </mapper>

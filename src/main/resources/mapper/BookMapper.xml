@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sell.dao.BookMapper">
+    <resultMap id="BaseResultMap" type="com.example.sell.entity.Book">
+        <id column="book_id" jdbcType="INTEGER" property="bookId" />
+        <result column="book_name" jdbcType="VARCHAR" property="bookName"/>
+        <result column="book_price" jdbcType="VARCHAR" property="bookPrice"/>
+        <result column="book_owner" jdbcType="INTEGER" property="bookOwner"/>
+    </resultMap>
+
+
+    <insert id="insertBook" useGeneratedKeys="true" keyProperty="booKId" parameterType="com.example.sell.entity.Book">
+        insert into book (book_name, book_price, book_owner)
+        values (#{bookName},#{bookPrice},#{bookOwner})
+    </insert>
+
+    <update id="updateBook" parameterType="com.example.sell.entity.Book">
+        update book
+          <set>
+              <if test="bookName !=null and bookName != &quot;&quot;">
+                  book_name=#{bookName},
+              </if>
+              <if test="bookPrice != null and bookPrice != &quot;&quot;">
+                  book_price=#{bookPrice},
+              </if>
+              <if test="bookOwner !=null and bookOwner != &quot;&quot;">
+                  book_owner=#{bookOwner}
+              </if>
+          </set>
+        where book_id=#{bookId}
+    </update>
+
+    <delete id="deleteBook" parameterType="com.example.sell.entity.Book">
+        delete from book
+        <where>
+            <if test="bookId !=null and bookId != &quot;&quot;">
+                book_id=#{bookId}
+            </if>
+            <if test="bookName !=null and bookName != &quot;&quot;">
+                or book_name=#{bookName}
+            </if>
+        </where>
+    </delete>
+    
+    <select id="getBooks" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from book where book_owner=#{bookOwner}
+    </select>
+
+
+
+</mapper>

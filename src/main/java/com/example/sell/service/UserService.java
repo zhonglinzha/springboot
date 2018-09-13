@@ -50,7 +50,7 @@ public class UserService {
 //
 //    }
 //
-//    User getUserAndBooks(Integer userid){
-//
-//    }
+    public User getUserAndBooks(Integer userid){
+        return userMapper.getUserAndBooks(userid);
+    }
 }

@@ -2,27 +2,37 @@ package com.example.sell.entity;
 
 public class Book {
 
-    private Integer booKId;
+    private Integer bookId;
     private String bookName;
     private String bookPrice;
     private Integer bookOwner;
+    private User user;
 
     @Override
     public String toString() {
         return "Book{" +
-                "booKId=" + booKId +
+                "booKId=" + bookId +
                 ", bookName='" + bookName + '\'' +
                 ", bookPrice='" + bookPrice + '\'' +
                 ", bookOwner=" + bookOwner +
+                ", user=" + user +
                 '}';
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getBooKId() {
-        return booKId;
+        return bookId;
     }
 
     public void setBooKId(Integer booKId) {
-        this.booKId = booKId;
+        this.bookId = booKId;
     }
 
     public String getBookName() {

@@ -1,7 +1,6 @@
 package com.example.sell.dao;
 
 import com.example.sell.entity.Book;
-import com.example.sell.entity.OrderDetail;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public interface BookMapper {
 
     Book getBook(Book book);
 
-    List<Book> getBooks();
+    List<Book> getBooks(Integer bookOwner);
 
 
 }
